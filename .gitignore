@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Hide source code (Only upload compiled JavaScript to GitHub)
+/app.ts
+/tsconfig.json
+/src/
+
+# Env config files
+.env
+.env.*
+.env.local
+
+# IDEs/System files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Vercel output
+.vercel/
+
