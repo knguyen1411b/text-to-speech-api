@@ -14,10 +14,12 @@ describe("TTS API endpoints", () => {
     process.env.API_KEY = testApiKey;
     mockFetch = jest.fn();
     global.fetch = mockFetch;
+    jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
     delete process.env.API_KEY;
+    jest.restoreAllMocks();
   });
 
   afterAll(() => {

@@ -18,10 +18,12 @@ describe("authMiddleware", () => {
       json: jest.fn(),
     };
     nextFunction = jest.fn();
+    jest.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
     delete process.env.API_KEY;
+    jest.restoreAllMocks();
   });
 
   it("should return 500 if API_KEY is not defined in the environment", () => {
