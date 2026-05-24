@@ -2,12 +2,13 @@
   "name": "tts-api",
   "version": "1.0.0",
   "description": "Text-to-Speech API",
-  "main": "tts/app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "dev": "tsx watch app.ts",
-    "build:local": "tsc",
-    "build": "echo 'Production build skipped (using pre-built files)'",
-    "start": "node tts/app.js"
+    "dev": "tsx watch src/server.ts",
+    "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
+    "test": "jest",
+    "test:cov": "jest --coverage"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -17,7 +18,13 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.12.7",
+    "@types/supertest": "^7.2.0",
+    "jest": "^30.4.2",
+    "rimraf": "^6.1.3",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.11",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5"
   }

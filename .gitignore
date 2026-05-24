@@ -1,10 +1,9 @@
 # Dependencies
 node_modules/
 
-# Hide source code (Only upload compiled JavaScript to GitHub)
-/app.ts
-/tsconfig.json
-/src/
+# Compiled files
+/dist/
+/coverage/
 
 # Env config files
 .env
