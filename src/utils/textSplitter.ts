@@ -1,16 +1,7 @@
-/**
- * Splits a long text string into smaller chunks appropriate for the Google TTS API (which has a limit of 200 characters).
- * It preserves sentence boundaries when possible, and falls back to word boundaries or hard splitting if sentences or words are too long.
- *
- * @param text The input text to be split.
- * @param maxLength The maximum allowed length of each chunk (default is 200 characters).
- * @returns An array of string chunks.
- */
 export function splitTextIntoChunks(text: string, maxLength: number = 200): string[] {
   const chunks: string[] = [];
   let currentChunk = "";
 
-  // Split by sentence boundaries (periods, exclamation marks, question marks, semicolons followed by whitespace, or newlines)
   const sentences = text.split(/(?<=[.?!;\n])\s+|\n+/);
 
   for (const sentence of sentences) {
@@ -24,7 +15,6 @@ export function splitTextIntoChunks(text: string, maxLength: number = 200): stri
         currentChunk = sentence;
       }
     } else {
-      // If a single sentence exceeds the maxLength, split it by words
       if (currentChunk.trim()) {
         chunks.push(currentChunk.trim());
         currentChunk = "";
@@ -37,7 +27,6 @@ export function splitTextIntoChunks(text: string, maxLength: number = 200): stri
             chunks.push(currentChunk.trim());
           }
 
-          // If a single word/sequence is longer than maxLength, split it hard
           if (word.length > maxLength) {
             let remaining = word;
             while (remaining.length > maxLength) {

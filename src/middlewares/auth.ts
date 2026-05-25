@@ -1,16 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-/**
- * Middleware that authenticates requests using an API Key.
- * It checks in order:
- * 1. Custom HTTP header: `x-api-key`
- * 2. Standard HTTP Authorization header: `Bearer <key>` or `<key>`
- * 3. Query string parameter: `?key=<key>`
- */
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
   const systemApiKey = process.env.API_KEY;
 
-  // If no API Key is configured in the environment, reject all requests with a 500 error
   if (!systemApiKey) {
     console.error("[AUTH ERROR]: API_KEY environment variable is not configured.");
     return res.status(500).json({

@@ -21,11 +21,6 @@ async function streamToBuffer(stream: Readable): Promise<Buffer> {
   return Buffer.concat(chunks);
 }
 
-/**
- * Controller to handle Text-to-Speech conversion request.
- * Resolves the request by dividing long texts into chunks, fetching TTS audio from Microsoft Edge API in parallel,
- * merging the resulting audio buffers, and sending the unified binary stream back as an attachment.
- */
 export async function handleTTS(req: Request, res: Response) {
   const text = (req.body.text || req.query.text || "") as string;
   const lang = (req.body.lang || req.query.lang || "vi") as string;
@@ -42,7 +37,6 @@ export async function handleTTS(req: Request, res: Response) {
     voice = LANGUAGE_VOICE_MAP[key] || LANGUAGE_VOICE_MAP["vi"];
   }
 
-  // Edge TTS supports larger chunk sizes; we use 2000 characters for natural phrasing context
   const chunks = splitTextIntoChunks(text, 2000);
 
   try {
