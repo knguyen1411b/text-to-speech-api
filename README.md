@@ -1,6 +1,6 @@
 # Text-to-Speech (TTS) API
 
-A lightweight, secure, and production-ready Express & TypeScript API designed to convert text into high-quality speech audio files using the Google Translate TTS engine. It splits long texts semantically into parallel chunks and streams them back combined as a single audio file.
+A lightweight, secure, and production-ready Express & TypeScript API designed to convert text into high-quality speech audio files using the Microsoft Edge Neural TTS engine. It splits long texts semantically into parallel chunks and streams them back combined as a single audio file.
 
 ![API Playground Screenshot](./public/image.png)
 
@@ -9,7 +9,7 @@ A lightweight, secure, and production-ready Express & TypeScript API designed to
 ## 🚀 Features
 
 - **Text-to-Speech Conversion:** Converts any string of text into a downloadable `.mp3` audio stream.
-- **Smart Text Chunking:** Semantically splits long paragraphs into chunks of under 200 characters to comply with Google Translate TTS limits, preserving natural sentence/word transitions.
+- **Smart Text Chunking:** Semantically splits long paragraphs into chunks of under 2000 characters to optimize phrasing context and comply with Edge TTS limits, preserving natural sentence/word transitions.
 - **Parallel Chunk Fetching:** Processes and downloads text chunks in parallel for ultra-fast response times.
 - **API Key Security:** Protects routes using flexible authorization headers, bearer tokens, or query keys.
 - **TypeScript First:** Reorganized, fully typed, and structured codebase.
